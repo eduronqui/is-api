@@ -14,6 +14,7 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/fiap_onecode/iaas#readme",
   "dependencies": {
+    "body-parser": "^1.14.1",
     "express": "^4.13.3"
   }
 }

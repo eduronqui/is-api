@@ -1,4 +1,7 @@
 var setup = function (app) {
+	var bodyParser = require('body-parser');
+	
+	app.use(bodyParser.json());
 	
 	setup_routes(app);	
 };

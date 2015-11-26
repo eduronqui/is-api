@@ -1,0 +1,19 @@
+{
+  "name": "iaas",
+  "version": "1.0.0",
+  "description": "A recommedation platform for small or mid-size e-commerces that needs better product recommendation for their clients.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://eduronqui@bitbucket.org/fiap_onecode/iaas.git"
+  },
+  "author": "OneCode Inc.",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/fiap_onecode/iaas#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}

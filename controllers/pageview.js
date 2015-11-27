@@ -15,11 +15,9 @@ var addHit = function (req, res) {
 };
 
 var pageview = {
-
 	getPageView: getPageView,
 	
-	addHit: addHit,
+	addHit: addHit
 };
-
 
 module.exports = pageview;

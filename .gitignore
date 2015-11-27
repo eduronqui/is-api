@@ -1,2 +1,8 @@
 # Dependency directory
 node_modules
+
+# Log files
+*.log
+
+# VS Code specific assets
+.vscode

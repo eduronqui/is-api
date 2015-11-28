@@ -22,9 +22,9 @@
     "db": {
       "host": "127.0.0.1",
       "port": "3306",
-      "user": "api_usr",
-      "password": "z\"lD2v",
-      "database": "iaas"
+      "user": "oc_user",
+      "password": "oc_pwd",
+      "database": "oc_database"
     }
   }
 }

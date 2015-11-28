@@ -13,8 +13,13 @@ var r = {
 			args = '';	
 		}
 		
-		var cmd = 'Rscript ../r-scripts/' + script + ' ' + args;
+		var cmd = 'Rscript {root}\\rscripts\\{script} {args}'
+			.replace('{root}', process.cwd())
+			.replace('{script}', script)
+			.replace('{args}', args);
+		
 		childProcess.exec(cmd, function (error, stdout, stderr) {
+			console.log(error);
 
 			callback(stdout);
 		});

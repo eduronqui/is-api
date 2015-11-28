@@ -1,9 +1,14 @@
-var setup = function (app) {
+var setup = function () {
+	var express = require('express');
+	var app = express();
+
 	var bodyParser = require('body-parser');
 	
 	app.use(bodyParser.json());
 	
-	setup_routes(app);	
+	setup_routes(app);
+	
+	return app;	
 };
 
 var setup_routes = function (app) {

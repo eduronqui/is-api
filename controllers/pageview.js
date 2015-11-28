@@ -16,14 +16,15 @@ var getPageView = function (req, res) {
 var addHit = function (req, res) {
 	
 	var pageview = {
-		chave: req.body.chave,
-		valor: req.body.valor
+		client_id: req.body.client_id,
+		store_id: req.body.store_id,
+		transaction_type: req.body.transaction_type,
+		transaction_items: req.body.transaction_items
 	};
 	
-	mysql.executeInsert('t_dummy', pageview);
+	mysql.executeInsert('oc_transactions', pageview);
 	
-	res.status(201)
-		.send(JSON.stringify(pageview));
+	res.status(201).send();
 };
 
 var pageview = {

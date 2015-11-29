@@ -4,6 +4,8 @@ var pageview = function (app) {
 	app.get('/pageview/:id', controller.getPageView);
 	
 	app.post('/pageview', controller.addHit);
+	
+	app.get('/pageview/top/:qtd', controller.getTopBestSellers);
 };
 
 module.exports = pageview;

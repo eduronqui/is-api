@@ -8,7 +8,7 @@ library(jsonlite);
 library(data.table);
 #mydb = dbConnect(MySQL(), user='hackathon', password='hackainm', dbname='hackathon-commerce', host='hackathon.cgzz1hagylvs.us-east-1.rds.amazonaws.com');
 
-mydb = dbConnect(MySQL(), user='root', password='1234', dbname='oc_database', host='192.168.99.100', port=32779);
+mydb = dbConnect(MySQL(), user='api_usr', password='z"lD2v', dbname='oc_database', host='127.0.0.1', port=3306);
 
 
 
@@ -18,7 +18,7 @@ mydb = dbConnect(MySQL(), user='root', password='1234', dbname='oc_database', ho
 #from ps_orders t1
 #left outer join ps_order_detail t4 on t1.id_order = t4.id_order");
 
-rs = dbSendQuery(mydb, "SELECT * FROM oc_transactions where transaction_type = 'P'");
+rs = dbSendQuery(mydb, "SELECT id, client_id, store_id, transaction_id, transaction_type, item FROM oc_transactions where transaction_type = 'P'");
 
 
 my_data <- fetch(rs, n=-1);
@@ -27,14 +27,12 @@ my_data <- fetch(rs, n=-1);
 write.csv(my_data, file = "data.csv")
 
 
-tr <- read.transactions("data.csv", format = "single", sep ="," , cols = c("transaction_id","transaction_items")); #Alterar Parâmetros
+tr <- read.transactions("data.csv", format = "single", sep ="," , cols = c("transaction_id","item")); #Alterar Parï¿½metros
 
 #tr <- read.transactions("data.csv", format = "basket", sep ="," , cols = 6 );
 
-#m1 <- apriori(tr, parameter = list(support=0.007, confidence= 0.15, minlen = 2)); #Alterar Parâmetros
-m1 <- apriori(tr, parameter = list(support=0.001, confidence= 0.20))
-
-inspect(m1)
+#m1 <- apriori(tr, parameter = list(support=0.007, confidence= 0.15, minlen = 2)); #Alterar Parï¿½metros
+invisible(m1 <- apriori(tr, parameter = list(support=0.001, confidence= 0.20)))
 
 dfrules <- as(m1, "data.frame")
 

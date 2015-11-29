@@ -10,11 +10,11 @@ CREATE TABLE oc_database.oc_transactions (
   PRIMARY KEY (id));
 
   CREATE TABLE oc_database.oc_rules (
-  id_oc_rules INT NOT NULL,
+  id_oc_rules INT NULL,
   rules VARCHAR(200) NULL,
-  support FLOAT NULL,
-  confidence FLOAT NULL,
-  lift FLOAT NULL,
+  support VARCHAR(20) NULL,
+  confidence VARCHAR(20) NULL,
+  lift VARCHAR(20) NULL,
   X1 VARCHAR(45) NULL,
   X2 VARCHAR(45) NULL,
   store_id VARCHAR(45) NULL,

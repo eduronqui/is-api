@@ -19,8 +19,9 @@ var r = {
 			.replace('{args}', args);
 		
 		childProcess.exec(cmd, function (error, stdout, stderr) {
-			console.log(error);
-
+			if (error)
+				console.log(error);
+				
 			callback(stdout);
 		});
 	},

@@ -37,14 +37,14 @@ var addHit = function (req, res) {
 var getTopBestSellers = function (req, res) {
 	var qtd = req.params.qtd || 10;
 	
-	var sql = 'select t.product_name, count(t.item) as qtd ' +
-		'from oc_transactions t ' +
-		'group by t.item ' +
-		'order by qtd desc, t.item asc ' +
-		'limit {qtd}'
-			.replace('{qtd}', qtd);
-		
-		mysql.executeQuery(sql, function (data) {
+	var sql = 'select t.id, t.client_id, store_id, t.product_name, count(t.transaction_items) as total, t.transaction_type as qtd ' +
+	'from oc_transactions t ' +
+	'group by t.client_id ' +
+	'order by t.client_id desc ' +
+	'limit {qtd}'
+	.replace('{qtd}', qtd);
+	
+	mysql.executeQuery(sql, function (data) {
 		res.status(200).send(data);
 	});
 };

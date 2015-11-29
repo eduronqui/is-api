@@ -18,7 +18,7 @@ var mysql = {
 		var connection = createConnection();
 		connection.query(query, function (err, rows) {
 			if (err)
-				console.log('There was an error! :( ...');
+				console.log(err);
 			
 			if(callback)	
 				callback(rows);
@@ -39,9 +39,9 @@ var mysql = {
 			if (err)
 				console.log('There was an error! :( ...');
 
-			if (callback)	
-				callback(result);
-		});
+					if (callback)	
+						callback(result);
+				});
 		
 		connection.end(function (err) {
 			if (err)

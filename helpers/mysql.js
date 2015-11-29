@@ -12,37 +12,40 @@ var createConnection = function () {
 };
 
 var mysql = {
-	
+
 	executeQuery: function (query, callback) {
-		
+
 		var connection = createConnection();
 		connection.query(query, function (err, rows) {
 			if (err)
 				console.log(err);
-			
-			if(callback)	
+
+			if (callback)
 				callback(rows);
-		});	
-		
+		});
+
 		connection.end(function (err) {
 			if (err)
 				console.log('There was an error closing db connection.');
 		});
 	},
-	
-	executeInsert: function (table, jdata, callback) {
-		
+
+	executeInsert: function (connection, table, jdata, callback) {
+
 		var sql = 'insert into {table} set ?'.replace('{table}', table);
-		
-		var connection = createConnection();
+
 		connection.query(sql, jdata, function (err, result) {
 			if (err)
 				console.log(err);
 
-					if (callback)	
-						callback(result);
-				});
-		
+			if (callback)
+				callback(result);
+		});
+	},
+
+	createConnection: createConnection,
+
+	closeConnection: function (connection) {
 		connection.end(function (err) {
 			if (err)
 				console.log('There was an error closing db connection.');

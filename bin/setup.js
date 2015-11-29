@@ -9,15 +9,7 @@ var setup = function () {
 	
 	setup_routes(app);
 	
-	var interval = setInterval(exporter, 600000);
-	
-	process.on('exit', function (interval) {
-		clearInterval(interval);
-	}.bind(null, interval));
-
-	process.on('SIGINT', function (interval) {
-		clearInterval(interval);
-	}.bind(null, interval));
+	setTimeout(exporter, 300);
 	
 	return app;	
 };
@@ -39,6 +31,8 @@ var exporter = function () {
 
 		stream = stream.substr(stream.indexOf('[{'), stream.indexOf('}]')-stream.indexOf('[{')) + '}]';	
 		var jstream = JSON.parse(stream);
+		
+		var c = mysql.createConnection();
 
 		for (var i = 0; i < jstream.length; i++) {
 			var srule = jstream[i];
@@ -51,9 +45,11 @@ var exporter = function () {
 				x1: srule.ruleif.X1 || 0,
 				x2: srule.rulethen.X2 || 0,
 			};
-
-			mysql.executeInsert('oc_rules', rule);
+			
+			mysql.executeInsert(c, 'oc_rules', rule);
 		}
+		
+		mysql.closeConnection(c);
 		
 		console.log('Recommendations! :) ');
 	});

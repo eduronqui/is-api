@@ -18,7 +18,7 @@ mydb = dbConnect(MySQL(), user='api_usr', password='z"lD2v', dbname='oc_database
 #from ps_orders t1
 #left outer join ps_order_detail t4 on t1.id_order = t4.id_order");
 
-rs = dbSendQuery(mydb, "SELECT id, client_id, store_id, transaction_id, transaction_type, item FROM oc_transactions where transaction_type = 'P'");
+rs = dbSendQuery(mydb, "SELECT id, client_id, store_id, transaction_id, transaction_type, transaction_items FROM oc_transactions where transaction_type = 'P'");
 
 
 my_data <- fetch(rs, n=-1);
@@ -27,7 +27,7 @@ my_data <- fetch(rs, n=-1);
 write.csv(my_data, file = "data.csv")
 
 
-tr <- read.transactions("data.csv", format = "single", sep ="," , cols = c("transaction_id","item")); #Alterar Par�metros
+tr <- read.transactions("data.csv", format = "single", sep ="," , cols = c("transaction_id","transaction_items"), rm.duplicates=TRUE); #Alterar Par�metros
 
 #tr <- read.transactions("data.csv", format = "basket", sep ="," , cols = 6 );
 

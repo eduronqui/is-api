@@ -1,34 +1,28 @@
 var mysql = require('../helpers/mysql.js');
 
-var getPageView = function (req, res) {
-	mysql.executeQuery('select * from t_dummy', function (data) {
-		
-		for (var i = 0; i < data.length; i++){
-			var row = data[i];
-			console.log('chave: ' + row.chave);
-			console.log('valor: ' + row.valor);
-		}
-		
-		res.status(200).send(req.params.id);
-	});
-};
-
 var addHit = function (req, res) {
 
-	if (!req.body) {
-		var items = req.body.transaction_items.split(',');
+	if (req.body) {
+		var items = req.body.transaction_items;
 
+		var today = new Date()
+		
+		var c = mysql.createConnection();
+		
 		for (var i = 0; i < items.length; i++) {
 			var pageview = {
 				client_id: req.body.client_id,
 				transaction_id: req.body.transaction_id,
 				store_id: req.body.store_id,
 				transaction_type: req.body.transaction_type,
-				item: items[i]
+				transaction_items: items[i].id,
+				product_name: items[i].name,
+				order_date: today.getFullYear() + '-' + today.getMonth() + '-' + today.getDate()
 			};
 
-			mysql.executeInsert('oc_transactions', pageview);
+			mysql.executeInsert(c, 'oc_transactions', pageview);
 		}
+		mysql.closeConnection(c);
 	}
 
 	res.status(201).send();
@@ -49,12 +43,21 @@ var getTopBestSellers = function (req, res) {
 	});
 };
 
+var getRecomendations = function(req, res){
+ var sql = 'SELECT id_oc_rules, rules, support, confidence, lift, X1, X2, store_id ' + 
+ 'FROM oc_rules';
+
+ mysql.executeQuery(sql, function (data){
+  res.status(200).send(data);
+ });
+};
+
 var pageview = {
-	getPageView: getPageView,
-	
 	getTopBestSellers: getTopBestSellers,
-	
-	addHit: addHit
+
+	addHit: addHit,
+
+	getRecomendations: getRecomendations
 };
 
 module.exports = pageview;

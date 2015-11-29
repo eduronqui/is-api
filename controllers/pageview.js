@@ -37,7 +37,7 @@ var addHit = function (req, res) {
 var getTopBestSellers = function (req, res) {
 	var qtd = req.params.qtd || 10;
 	
-	var sql = 'select t.item, count(t.item) as qtd ' +
+	var sql = 'select t.product_name, count(t.item) as qtd ' +
 		'from oc_transactions t ' +
 		'group by t.item ' +
 		'order by qtd desc, t.item asc ' +
@@ -45,13 +45,7 @@ var getTopBestSellers = function (req, res) {
 			.replace('{qtd}', qtd);
 		
 		mysql.executeQuery(sql, function (data) {
-		
-			var result = new Array(data.length);
-			for (var i = 0; i < data.length; i++){
-				result[i] = [data[i].item, data[i].qtd];
-			}
-			
-		res.status(200).send(result);
+		res.status(200).send(data);
 	});
 };
 

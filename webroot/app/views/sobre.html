@@ -1,3 +1,26 @@
-<div class="page-header">
-	<h1>Página Sobre!</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Itens</th>
+						<th>combina com </th>
+						<th>Recomendação</th>
+						<th>Confiança</th>
+						<th>Suporte</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="recomendation in recomendations">
+						<td>{{recomendation.X1}}</td>
+						<td> >> </td>
+						<td>{{recomendation.X2}}</td>
+						<td>{{recomendation.confidence}}</td>
+						<td>{{recomendation.support}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>

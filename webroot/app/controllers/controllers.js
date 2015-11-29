@@ -14,9 +14,17 @@ app.controller('HomeCtrl', function($rootScope, $location, $http)
 
 });
 
-app.controller('SobreCtrl', function($rootScope, $location)
+app.controller('SobreCtrl', function($rootScope, $location, $http)
 {
 	$rootScope.activetab = $location.path();
+	$rootScope.recomendations = [];
+
+	$http.get('http://localhost:3000/pageview/recomendation').success(function (data){
+		$rootScope.recomendations = data;
+	}).error(function (data, status){
+		$rootScope.message = "O que ta coteseno" + status;
+	});
+
 });
 
 app.controller('ContatoCtrl', function($rootScope, $location)

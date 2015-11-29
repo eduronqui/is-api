@@ -9,7 +9,7 @@ var setup = function () {
 	
 	setup_routes(app);
 	
-	setTimeout(exporter, 300);
+	//setTimeout(exporter, 300);
 	
 	return app;	
 };

@@ -5,26 +5,26 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://eduronqui@bitbucket.org/fiap_onecode/iaas.git"
-  },
-  "author": "OneCode Inc.",
-  "license": "ISC",
-  "homepage": "https://bitbucket.org/fiap_onecode/iaas#readme",
-  "dependencies": {
-    "body-parser": "^1.14.1",
-    "express": "^4.13.3",
-    "mysql": "^2.9.0"
-  },
-  "config":{
-    "db": {
-      "host": "127.0.0.1",
-      "port": "3306",
-      "user": "api_usr",
-      "password": "z\"lD2v",
-      "database": "oc_database"
-    }
-  }
-}
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://eduronqui@bitbucket.org/fiap_onecode/iaas.git"
+      },
+      "author": "OneCode Inc.",
+      "license": "ISC",
+      "homepage": "https://bitbucket.org/fiap_onecode/iaas#readme",
+      "dependencies": {
+        "body-parser": "^1.14.1",
+        "express": "^4.13.3",
+        "mysql": "^2.9.0"
+        },
+        "config":{
+          "db": {
+            "host": "127.0.0.1",
+            "port": "3306",
+            "user": "oc_user",
+            "password": "oc_pwd",
+            "database": "oc_database"
+          }
+        }
+      }

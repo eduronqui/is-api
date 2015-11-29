@@ -4,7 +4,8 @@
   "description": "A recommedation platform for small or mid-size e-commerces that needs better product recommendation for their clients.",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "start-ubuntu": "nodejs app.js"
     },
     "repository": {
       "type": "git",
@@ -20,10 +21,10 @@
         },
         "config":{
           "db": {
-            "host": "127.0.0.1",
+            "host": "hackathon.cgzz1hagylvs.us-east-1.rds.amazonaws.com",
             "port": "3306",
-            "user": "oc_user",
-            "password": "oc_pwd",
+            "user": "hackathon",
+            "password": "hackainm",
             "database": "oc_database"
           }
         }

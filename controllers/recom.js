@@ -3,7 +3,7 @@ var rhelper = require('../helpers/r.js');
 var recom = {
 	
 	getProductRecom: function (req, res) {
-		rhelper.runChildProcess('recom02.r', function (stream) {
+		rhelper.runChildProcess('rscript.r', function (stream) {
 			// TODO processar stream
 			res.status(200).send('OK');
 		});

@@ -5,6 +5,7 @@ var setup = function () {
 	var bodyParser = require('body-parser');
 	
 	app.use(bodyParser.json());
+	app.use(express.static('public')); 
 	
 	setup_routes(app);
 	

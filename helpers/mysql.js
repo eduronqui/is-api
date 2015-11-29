@@ -37,7 +37,7 @@ var mysql = {
 		var connection = createConnection();
 		connection.query(sql, jdata, function (err, result) {
 			if (err)
-				console.log('There was an error! :( ...');
+				console.log(err);
 
 					if (callback)	
 						callback(result);
